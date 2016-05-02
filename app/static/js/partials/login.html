@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-12 text text-center">
+    <h1>Login</h1>
+  </div>
+</div>
+<head>
+  <title>Login</title>
+  <link rel="icon" type="image/ico" href="static/wishlist.ico" />
+</head>
+
+<form ng-submit="login()">
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-3">
+      <label for = "email">Email Address</label>
+      <input type="email" class="form-control" id="email" placeholder="Email" ng-model="credentials.email">
+    </div>
+    <div class="col-xs-3">
+      <label for ="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" ng-model="credentials.password">
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-9">
+      <button type="submit" class="btn btn-primary btn-lg">Login</button>
+    </div>
+  </div>
+</form>

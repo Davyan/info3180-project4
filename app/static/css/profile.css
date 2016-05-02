@@ -1,0 +1,22 @@
+body {
+  padding-top: 50px;
+}
+
+img {
+  float: left;
+  height: 200px;
+  width: 270px;
+  padding: 0 10px 0 300px;
+}
+
+.profile {
+  float: right;
+  position: relative;
+  padding-right: 470px;
+}
+
+.box {
+  border: 1px solid black;
+  background: #94ccfc;
+  padding: 0 20px 0 20px;
+}

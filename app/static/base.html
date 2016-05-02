@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src = "static/js/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src = "static/js/bower_components/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="static/js/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <script src= "static/js/bower_components/angular-route/angular-route.min.js"></script>
+    <script src= "static/js/bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="static/js/app.js"></script>
+    <style>
+    .row{
+      padding-top: 10px;
+    }
+
+    .preview{
+      height: 100px;
+      width: 100px;
+    }
+    .thumb{
+      height: 48px;
+      width: 48px;
+    }
+      .container{
+        background-color: #33CCCC;
+        
+      }
+    .display{
+      display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    </style>
+    <link rel="icon" type="image/ico" href="static/img/wishlist.ico" />
+  </head>
+
+  <body class="container" ng-app="wishListApp">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li ng-show="$root.loggedIn"><a href="">Hello, {{$root.currentUserName}}</a></li>
+          <li ng-hide="$root.loggedIn"><a ng-href="#/login">Login</a></li>
+          <li ng-show="$root.loggedIn"><a href=""><span ng-click="$root.getMyWishlist()">My Wishlist</span></a></li>
+          <li><a ng-href="#/profiles">Profiles</a></li>
+          <li ng-show="$root.loggedIn"><a href=""><span ng-click="$root.logout()">Logout</span></a></li>
+          <li ng-hide="$root.loggedIn"><a ng-href="#/signup">Sign Up</a></li>
+          <li><a></a></li>
+        </ul>
+      </div>
+    </nav>
+    <div>
+      <nav class = "navbar">
+        <div>
+          <img class= "display "src="/static/img/wishlist.gif" alt="Wishlist" align="middle"  style="width:204px;height:200px;">
+        </div>
+      </nav>
+    </div>
+    <div ng-show="$root.error" class="alert alert-danger">
+      <div ng-repeat="(key , values) in $root.errors">
+        <div ng-repeat="value in [].concat(values)">
+          {{key}} : {{value}}
+        </div>
+      </div>
+    </div>
+    <ng-view></ng-view>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<title>New Item</title>
+<div class="row text text-center">
+  <h1>New Item</h1>
+</div>
+<form>
+  <div class="row">
+    <div class= "col-xs-10">
+      <label for ="item_url">Item Url</label>
+      <input type="text" name="item_url" class="form-control" ng-blur="scrape(url)" ng-model="url"/>
+    </div>
+    <div class="col-xs-2">
+      <label for="refresh">&nbsp;</label>
+      <button class="form-control btn btn-primary" name="refresh" ng-click="scrape(url)"><i class="glyphicon glyphicon-refresh"></i></button>
+    </div>
+  </div>
+
+  <div class="row" ng-show="selectedImage">
+    Image
+    <img src="{{selectedImage}}" class="preview img img-responsive"></img>
+  </div>
+
+  <div ng-show="selectedImage" class="row">
+    Choose Another Image
+  </div>
+  <div class="row" ng-show="selectedImage">
+    <div class="col-xs-2" ng-repeat="image in images">
+      <a href=""><img src="{{image.url}}" ng-click="selectImage(image.url)" class="thumb"/></a>
+    </div>
+  </div>
+
+  <div class="row" ng-show="selectedImage">
+    <div class="col-xs-12">
+      <label for="productName">Product Name</label>
+      <input type="text" ng-model="title" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="row" ng-show="selectedImage">
+    <div class="col-xs-12">
+      <label for="description">Description</label></br>
+      <textarea ng-model="description" class="form-control" rows="8"></textarea>
+    </div>
+  </div>
+
+  <div class="row" ng-show="selectedImage">
+    <div class="col-xs-12">
+      <button class="btn btn-default" ng-click="createItem()">Add Item <i class="glyphicon glyphicon-plus"></i></button>
+    </div>
+  </div>
+</form>

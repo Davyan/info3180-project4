@@ -1,0 +1,87 @@
+<style>
+.share_icon{
+  width: 100px;
+  height: 100px;  
+}
+</style>
+<title>Wishlist</title>
+<div class="row text text-center">
+  <h1 ng-if="!currentUser()">{{firstname}}'s Wishlist</h1>
+  <h1 ng-if="currentUser()">Your Wishlist</h1>
+</div>
+<div class="row" ng-repeat="item in items">
+  <div class="col-xs-8 text text-left">
+    <a ng-if="!item.purchased"href="" ng-click="viewItem(item.id)">{{item.name}}</a>
+    <del><a ng-if="item.purchased"href="" ng-click="viewItem(item.id)" style="color:grey">{{item.name}}</a></del>
+  </div>
+  <div class="col-xs-2 text-center" ng-show="currentUser()">
+    <a href=""><i class="glyphicon glyphicon-remove" ng-click="deleteItem(item.id , $index)"></i></a>
+  </div>
+  <div class="col-xs-2 text-right">
+      <input ng-disabled="!currentUser()" ng-class="checkbox" type="checkbox" ng-model="item.purchased" ng-change="purchaseItem(item.id, $index)"/>
+  </div>
+  
+</div>
+<div class="row">
+  <div class=class="col-xs-6">
+    <button ng-show="currentUser()" ng-click="openAddItemForm()" class="btn btn-primary">Add To Wishlist <i class="glyphicon glyphicon-plus"></i></button>
+  </div>
+</div>
+
+<div ng-show="currentUser()">
+<h1>Share Wishlist</h1>
+</div>
+
+<div class="row" ng-show="currentUser()">
+  <div class="col-xs-1">
+    <a href="" ng-click="toggleEmailModal()"><img class="img img-responsive share_icon center-block" src="static/img/email.png"/></a>
+  </div>
+  <div class="col-xs-1">
+    <img class="img img-responsive share_icon center-block" src="static/img/facebook.png"/>
+  </div>
+  <div class="col-xs-1">
+    <img class="img img-responsive share_icon center-block" src="static/img/twitter.png"/>
+  </div>
+    <div class="col-xs-1">
+    <img class="img img-responsive share_icon center-block" src="static/img/googleplus.png"/>
+  </div>
+  <div class="col-xs-1">
+    <img class="img img-responsive share_icon center-block" src="static/img/instagram.png"/>
+  </div>
+    <div class="col-xs-1">
+    <img class="img img-responsive share_icon center-block" src="static/img/messenger.png"/>
+  </div>
+  <div class="col-xs-1">
+    <img class="img img-responsive share_icon center-block" src="static/img/whatsapp.png"/>
+  </div>
+</div>
+
+<!-- Send Email Modal -->
+<div class="modal-dialog" id="email-modal" aria-hidden="true" ng-show="showEmailModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="row">
+        <div class="col-xs-6">
+          <h1 class="modal-title">Share Your Wishlist</h4>
+        </div>
+    
+        <div class="col-xs-6 text-right">
+          <a type="close" data-dismiss="modal" aria-hidden="true" ng-click="toggleEmailModal()"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+          <input type="email" placeholder="Enter Email Address" class="form-control" ng-model="email"></input>
+        </div>
+        <div class="row">
+          <textArea placeholder="Message" class="form-control" ng-model="message"></textArea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row text right">
+          <button class="btn btn-primary" ng-click="sendEmail()">Send</button>
+        </div>
+    </div>
+  </div>
+</div>
